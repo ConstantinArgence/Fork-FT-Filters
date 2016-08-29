@@ -119,11 +119,42 @@
         
         $(function() {
           var myMap = new MapsLib({
-            fusionTableId:      "1BZkfBKRXVqoJi9SxYFWrHCyhzlMC_8dQ3SYZoirq",
-            googleApiKey:       "AIzaSyBKpejYB-VvoHPbr7_z8GVE9bR1jdfI8NY",
-            locationColumn:     "KML",
-            map_center:         [46.71062860299483, 1.1878453027343117],
-            locationScope:      "Indre"
+               var layer_0;
+               var layer_1;
+               var layer_2;
+    function initialize() {
+      map = new google.maps.Map(document.getElementById('map-canvas'), {
+        center: new google.maps.LatLng(46.71062860299483, 1.1878453027343117),
+        zoom: 10,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      });
+      layer_0 = new google.maps.FusionTablesLayer({
+        query: {
+          select: "col2",
+          from: "1BZkfBKRXVqoJi9SxYFWrHCyhzlMC_8dQ3SYZoirq"
+        },
+        map: map,
+        styleId: 2,
+        templateId: 2
+      });
+      layer_1 = new google.maps.FusionTablesLayer({
+        query: {
+          select: "col8",
+          from: "12bBCK3jsuqhKChZQ6GcH5FasSl0q3m40qaXxihNF",
+          where: " col0 in ('', 'Center', 'Camping', 'Attraction', 'Concurrence')"
+        },
+        map: map,
+        styleId: 2,
+        templateId: 3
+      });
+      layer_2 = new google.maps.FusionTablesLayer({
+        query: {
+          select: "col4",
+          from: "1pigpdu2e4L1WADaoSblfMbKVH-UMLY7Ej9MtvIG9"
+        },
+        map: map,
+        styleId: 2,
+        templateId: 2
           });
 
           var autocomplete = new google.maps.places.Autocomplete(document.getElementById('search_address'));
