@@ -165,13 +165,14 @@
         //-----custom filters-----
         var Type_column = "Type";
 var searchType = Type_column + " IN (-1,";
-if ( $("#cbTypeAttraction").is(':checked')) searchType += "Attraction,";
-if ( $("#cbTypeCamping").is(':checked')) searchType += "Camping,";
+if ( $("#cbTypeAttraction").is(':checked')) searchType += "Attraction";
+if ( $("#cbTypeCamping").is(':checked')) searchType += "Camping";
 
-if ( $("#cbTypeHotel").is(':checked')) searchType += "Hotel,";
+if ( $("#cbTypeHotel").is(':checked')) searchType += "Hotel";
 
-if ( $("#cbTypeRestaurant").is(':checked')) searchType += "Restaurant,";
-if ( $("#cbTypeTabac").is(':checked')) searchType += "Tabac,";
+if ( $("#cbTypeRestaurant").is(':checked')) searchType += "Restaurant";
+if ( $("#cbTypeTabac").is(':checked')) searchType += "Tabac";
+self.whereClause += " AND " + type_column + " IN ('" + tempWhereClause.join("','") + "')";
 
         //-----end of custom filters-----
 
