@@ -164,7 +164,7 @@
         
         //-----custom filters-----
         var Type_column = "'Type'";
-var searchType = type_column + " IN (-1,";
+var searchType = Type_column + " IN (-1,";
 if ( $("#cbTypeAttraction").is(':checked')) searchType += "Attraction,";
 if ( $("#cbTypeCamping").is(':checked')) searchType += "Camping,";
 if ( $("#cbTypeChambre d'Hotes").is(':checked')) searchType += "Chambre d'Hotes,";
