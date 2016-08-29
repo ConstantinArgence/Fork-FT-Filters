@@ -168,10 +168,10 @@ var searchType = type_column + " IN (-1,";
 if ( $("#cbType1").is(':checked')) searchType += "1,";
 if ( $("#cbType2").is(':checked')) searchType += "2,";
 if ( $("#cbType3").is(':checked')) searchType += "3,";
-if ( $("#cbType1").is(':checked')) searchType += "4,";
-if ( $("#cbType1").is(':checked')) searchType += "5,";
-if ( $("#cbType1").is(':checked')) searchType += "6,";
-if ( $("#cbType1").is(':checked')) searchType += "7,";
+if ( $("#cbType4").is(':checked')) searchType += "4,";
+if ( $("#cbType5").is(':checked')) searchType += "5,";
+if ( $("#cbType6").is(':checked')) searchType += "6,";
+if ( $("#cbType7").is(':checked')) searchType += "7,";
 self.whereClause += " AND " + searchType.slice(0, searchType.length - 1) + ")";
 
         //-----end of custom filters-----
