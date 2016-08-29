@@ -163,16 +163,16 @@
         self.whereClause = self.locationColumn + " not equal to ''";
         
         //-----custom filters-----
-        var type_column = "'Label'";
-var searchLabel = type_column + " IN (-1,";
-if ( $("#cbLabel1").is(':checked')) searchLabel += "1,";
-if ( $("#cbLabel2").is(':checked')) searchLabel += "2,";
-if ( $("#cbLabel3").is(':checked')) searchLabel += "3,";
-if ( $("#cbLabel4").is(':checked')) searchLabel += "4,";
-if ( $("#cbLabel5").is(':checked')) searchLabel += "5,";
-if ( $("#cbLabel6").is(':checked')) searchLabel += "6,";
-if ( $("#cbLabel7").is(':checked')) searchLabel += "7,";
-self.whereClause += " AND " + searchLabel.slice(0, searchLabel.length - 1) + ")";
+        var type_column = "'Type'";
+var searchType = type_column + " IN (-1,";
+if ( $("#cbType1").is(':checked')) searchType += "1,";
+if ( $("#cbType2").is(':checked')) searchType += "2,";
+if ( $("#cbType3").is(':checked')) searchType += "3,";
+if ( $("#cbType1").is(':checked')) searchType += "4,";
+if ( $("#cbType1").is(':checked')) searchType += "5,";
+if ( $("#cbType1").is(':checked')) searchType += "6,";
+if ( $("#cbType1").is(':checked')) searchType += "7,";
+self.whereClause += " AND " + searchType.slice(0, searchType.length - 1) + ")";
 
         //-----end of custom filters-----
 
