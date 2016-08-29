@@ -167,7 +167,7 @@
 var tempWhereClause = [];
 if ( $("#cbTypeAttraction").is(':checked')) tempWhereClause.push("Attraction");
 if ( $("#cbTypeCamping").is(':checked')) tempWhereClause.push("Camping");
-if ( $("#cbTypeChambre d'Hotes").is(':checked')) tempWhereClause.push('Chambre d'Hotes');
+if ( $('#cbTypeChambre d'Hotes').is(':checked')) tempWhereClause.push('Chambre d'Hotes);
 if ( $("#cbTypeHotel").is(':checked')) tempWhereClause.push("Hotel");
 if ( $("#cbTypeHotel-Restaurant").is(':checked')) tempWhereClause.push("Hotel-Restaurant");
 if ( $("#cbTypeRestaurant").is(':checked')) tempWhereClause.push("Restaurant");
