@@ -172,7 +172,7 @@ if ( $("#cbTypeHotel").is(':checked')) searchType += "Hotel,";
 
 if ( $("#cbTypeRestaurant").is(':checked')) searchType += "Restaurant,";
 if ( $("#cbTypeTabac").is(':checked')) searchType += "Tabac,";
-self.whereClause += " AND " + searchType.slice(0, searchType.length - 1) + ")";
+
         //-----end of custom filters-----
 
         self.getgeoCondition(address, function (geoCondition) {
