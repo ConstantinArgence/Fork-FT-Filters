@@ -9,16 +9,16 @@
         this.searchRadius = options.searchRadius || 805; //in meters ~ 1/2 mile
 
         // the encrypted Table ID of your Fusion Table (found under File => About)
-        this.fusionTableId = options.fusionTableId || "",
+        this.fusionTableId = options.fusionTableId || "12NKH0-cu-AwfpfEiD83u9aGJOXzYKveqkMF0HHwq",
 
         // Found at https://console.developers.google.com/
         // Important! this key is for demonstration purposes. please register your own.
-        this.googleApiKey = options.googleApiKey || "",
+        this.googleApiKey = options.googleApiKey || "AIzaSyAujS5cr5sJzC4IJdGk4tO5YYqINOgX0eg",
         
         // name of the location column in your Fusion Table.
         // NOTE: if your location column name has spaces in it, surround it with single quotes
         // example: locationColumn:     "'my location'",
-        this.locationColumn = options.locationColumn || "geometry";
+        this.locationColumn = options.locationColumn || "latitude";
         
         // appends to all address searches if not present
         this.locationScope = options.locationScope || "";
@@ -163,7 +163,7 @@
         self.whereClause = self.locationColumn + " not equal to ''";
         
         //-----custom filters-----
-        var type_column = "'type'";
+        var Type_column = "'Type'";
 var searchType = type_column + " IN (-1,";
 if ( $("#cbTypeAttraction").is(':checked')) searchType += "Attraction,";
 if ( $("#cbTypeCamping").is(':checked')) searchType += "Camping,";
