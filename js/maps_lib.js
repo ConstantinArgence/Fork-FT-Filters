@@ -167,9 +167,9 @@
 var searchType = Type_column + " IN (-1,";
 if ( $("#cbTypeAttraction").is(':checked')) searchType += "Attraction,";
 if ( $("#cbTypeCamping").is(':checked')) searchType += "Camping,";
-if ( $("#cbTypeChambre d'Hotes").is(':checked')) searchType += "Chambre d'Hotes,";
+
 if ( $("#cbTypeHotel").is(':checked')) searchType += "Hotel,";
-if ( $("#cbTypeHotel-Restaurant").is(':checked')) searchType += "Hotel-Restaurant,";
+
 if ( $("#cbTypeRestaurant").is(':checked')) searchType += "Restaurant,";
 if ( $("#cbTypeTabac").is(':checked')) searchType += "Tabac,";
 self.whereClause += " AND " + searchType.slice(0, searchType.length - 1) + ")";
