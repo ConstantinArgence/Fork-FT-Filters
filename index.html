@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang='en'>
   <head>
-    <title>Searchable Map Template Demo</title>
+    <title>Indices geographiques autour de Rosnay</title>
     <meta charset='utf-8' />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta content='' name='description' />
@@ -36,13 +36,17 @@
     <div class='container-fluid'>
       <div class='row'>
         <div class='col-md-4'>
-          <p>This is a demo of <a href='http://derekeder.com'>Derek Eder's</a> <a href='http://derekeder.com/searchable_map_template/'>Searchable Map Template</a> using Google <a href='http://support.google.com/fusiontables/answer/2571232?hl=en&ref_topic=1652595'>Fusion Tables</a>. Use this section to give a little context to your map.</p>
+          <p>Cette carte a pour vocation de rendre visible les elements agissant dans un perimetre direct a Rosnay ou se trouve le Cendrille.
+          On y reconnaitra:
+          -la concurrence directe et indirecte
+          -des elements demographiques
+          -les axes de circulation</p>
           <div class='well'>
             <h4>
-              Address <small>(<a id='find_me' href='#'>find me</a>)</small>
+              Adresse <small>(<a id='find_me' href='#'>trouvez moi</a>)</small>
             </h4>
             <p>
-              <input class='form-control' id='search_address' placeholder='Enter an address or an intersection' type='text' />
+              <input class='form-control' id='search_address' placeholder='tapez une adresse' type='text' />
             </p>
             <p>
               <label>
@@ -55,6 +59,19 @@
                 </select>
               </label>
             </p>
+            
+            <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.min.css"/>
+<h4>
+  Perimetre
+  <small>
+    <span id='Km-selected-start'>0</span>
+    -
+    <span id='Km-selected-end'>200</span>
+  </small>
+</h4>
+<div id='Km'></div>
+<span class='pull-left'>0</span>
+<span class='pull-right'>200</span>
 
           <h4>
   Etablissement
@@ -140,6 +157,10 @@
 
     <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="js/jquery.address.js"></script>
+    ...
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    ...
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false&libraries=places&key=AIzaSyCSg3bQurfz0U61uKn_8CYgPHzcl_Y2JE8"></script>
     <script type="text/javascript" src="js/maps_lib.js"></script>
