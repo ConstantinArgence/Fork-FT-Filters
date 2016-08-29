@@ -167,7 +167,7 @@
 var searchType = type_column + " IN (-1,";
 if ( $("#cbType1").is(':checked')) searchType += "Attraction,";
 if ( $("#cbType2").is(':checked')) searchType += "Camping,";
-if ( $("#cbType3").is(':checked')) searchType += "Chambre d'Hotes,";
+if ( $("#cbType3").is(':checked')) searchType += 'Chambre d'Hotes,';
 if ( $("#cbType4").is(':checked')) searchType += "Hotel,";
 if ( $("#cbType5").is(':checked')) searchType += "Hotel-Restaurant,";
 if ( $("#cbType6").is(':checked')) searchType += "Restaurant,";
