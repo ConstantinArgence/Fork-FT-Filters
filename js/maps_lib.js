@@ -9,7 +9,9 @@
         this.searchRadius = options.searchRadius || 60000; //in meters ~ 1/2 mile
 
         // the encrypted Table ID of your Fusion Table (found under File => About)
-        this.fusionTableId = options.fusionTableId || "12NKH0-cu-AwfpfEiD83u9aGJOXzYKveqkMF0HHwq",
+        this.fusionTableId = options.fusionTableId || "12NKH0-cu-AwfpfEiD83u9aGJOXzYKveqkMF0HHwq", //Markers layer
+        fusionTableId: "1BZkfBKRXVqoJi9SxYFWrHCyhzlMC_8dQ3SYZoirq", //Polygon communes
+        fusionTableId: "1pigpdu2e4L1WADaoSblfMbKVH-UMLY7Ej9MtvIG9", //Lines axes de circulation
 
         // Found at https://console.developers.google.com/
         // Important! this key is for demonstration purposes. please register your own.
@@ -18,10 +20,10 @@
         // name of the location column in your Fusion Table.
         // NOTE: if your location column name has spaces in it, surround it with single quotes
         // example: locationColumn:     "'my location'",
-        this.locationColumn = options.locationColumn || "latitude";
+        this.locationColumn = options.locationColumn || "Geo";
         
         // appends to all address searches if not present
-        this.locationScope = options.locationScope || "";
+        this.locationScope = options.locationScope || "Indre, France";
 
         // zoom level when map is loaded (bigger is more zoomed in)
         this.defaultZoom = options.defaultZoom || 11; 
