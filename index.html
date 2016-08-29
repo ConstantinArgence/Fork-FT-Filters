@@ -178,13 +178,7 @@
         
        $(function() {
       MapsLib.initialize();
-      var autocomplete = new google.maps.places.Autocomplete(document.getElementById('search_address'));
-            map_center:         [46.71062860299483, 1.1878453027343117],
-            locationScope:      "Indre, France"
-          });
-      
-
-          var autocomplete = new google.maps.places.Autocomplete(document.getElementById('search_address'));
+        var autocomplete = new google.maps.places.Autocomplete(document.getElementById('search_address'));
       
           $(':checkbox').click(function(){
             myMap.doSearch();
