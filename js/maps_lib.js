@@ -165,13 +165,13 @@
         //-----custom filters-----
         var type_column = "'type'";
 var searchType = type_column + " IN (-1,";
-if ( $("#cbType1").is(':checked')) searchType += "Attraction,";
-if ( $("#cbType2").is(':checked')) searchType += "Camping,";
-if ( $("#cbType3").is(':checked')) searchType += 'Chambre d'Hotes,';
-if ( $("#cbType4").is(':checked')) searchType += "Hotel,";
-if ( $("#cbType5").is(':checked')) searchType += "Hotel-Restaurant,";
-if ( $("#cbType6").is(':checked')) searchType += "Restaurant,";
-if ( $("#cbType7").is(':checked')) searchType += "Tabac,";
+if ( $("#cbTypeAttraction").is(':checked')) searchType += "Attraction,";
+if ( $("#cbTypeCamping").is(':checked')) searchType += "Camping,";
+if ( $("#cbTypeChambre d'Hotes").is(':checked')) searchType += "Chambre d'Hotes,";
+if ( $("#cbTypeHotel").is(':checked')) searchType += "Hotel,";
+if ( $("#cbTypeHotel-Restaurant").is(':checked')) searchType += "Hotel-Restaurant,";
+if ( $("#cbTypeRestaurant").is(':checked')) searchType += "Restaurant,";
+if ( $("#cbTypeTabac").is(':checked')) searchType += "Tabac,";
 self.whereClause += " AND " + searchType.slice(0, searchType.length - 1) + ")";
         //-----end of custom filters-----
 
