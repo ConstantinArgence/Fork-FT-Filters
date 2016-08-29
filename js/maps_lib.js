@@ -71,6 +71,21 @@
         $("#result_box").hide();
 
         //-----custom initializers-----
+        $("#Km-slider").slider({
+    orientation: "horizontal",
+    range: true,
+    min: 0,
+    max: 60,
+    values: [0, 60],
+    step: 5,
+    slide: function (event, ui) {
+        $("#Km-selected-start").html(ui.values[0]);
+        $("#Km-selected-end").html(ui.values[1]);
+    },
+    stop: function(event, ui) {
+      self.doSearch();
+    }
+});
         //-----end of custom initializers-----
 
         //run the default search when page loads
@@ -173,6 +188,9 @@ if ( $("#cbType5").is(':checked')) searchType += "5,";
 if ( $("#cbType6").is(':checked')) searchType += "6,";
 if ( $("#cbType7").is(':checked')) searchType += "7,";
 self.whereClause += " AND " + searchType.slice(0, searchType.length - 1) + ")";
+
+self.whereClause += " AND 'Km' >= '" + $("#Km-selected-start").html() + "'";
+self.whereClause += " AND 'Km' <= '" + $("#Km-selected-end").html() + "'";
 
         //-----end of custom filters-----
 
