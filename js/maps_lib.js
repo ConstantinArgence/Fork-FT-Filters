@@ -163,16 +163,16 @@
         self.whereClause = self.locationColumn + " not equal to ''";
         
         //-----custom filters-----
-        var Type_column = "Type";
-var searchType = Type_column + " IN (-1,";
-if ( $("#cbTypeAttraction").is(':checked')) searchType += "Attraction";
-if ( $("#cbTypeCamping").is(':checked')) searchType += "Camping";
-
-if ( $("#cbTypeHotel").is(':checked')) searchType += "Hotel";
-
-if ( $("#cbTypeRestaurant").is(':checked')) searchType += "Restaurant";
-if ( $("#cbTypeTabac").is(':checked')) searchType += "Tabac";
-self.whereClause += " AND " + type_column + " IN ('" + tempWhereClause.join("','") + "')";
+        var Type_column = "'Type'";
+var tempWhereClause = [];
+if ( $("#cbTypeAttraction").is(':checked')) tempWhereClause.push("Attraction");
+if ( $("#cbTypeCamping").is(':checked')) tempWhereClause.push("Camping");
+if ( $("#cbTypeChambre d'Hotes").is(':checked')) tempWhereClause.push("Chambre d'Hotes");
+if ( $("#cbTypeHotel").is(':checked')) tempWhereClause.push("Hotel");
+if ( $("#cbTypeHotel-Restaurant").is(':checked')) tempWhereClause.push("Hotel-Restaurant");
+if ( $("#cbTypeRestaurant").is(':checked')) tempWhereClause.push("Restaurant");
+if ( $("#cbTypeTabac").is(':checked')) tempWhereClause.push("Tabac");
+self.whereClause += " AND " + Type_column + " IN ('" + tempWhereClause.join("','") + "')";
 
         //-----end of custom filters-----
 
