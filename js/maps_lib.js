@@ -1,65 +1,85 @@
-(function (window, undefined) {
-    var MapsLib = function (options) {
-        var self = this;
+// Enable the visual refresh
+google.maps.visualRefresh = true;
 
-        options = options || {};
-
-        this.recordName = options.recordName || "result"; //for showing a count of results
-        this.recordNamePlural = options.recordNamePlural || "results";
-        this.searchRadius = options.searchRadius || 60000; //in meters ~ 1/2 mile
+var MapsLib = MapsLib || {};
+var MapsLib = {
 
         // the encrypted Table ID of your Fusion Table (found under File => About)
-        this.fusionTableId = options.fusionTableId || "12NKH0-cu-AwfpfEiD83u9aGJOXzYKveqkMF0HHwq", //Markers layer
-        fusionTableId: "1BZkfBKRXVqoJi9SxYFWrHCyhzlMC_8dQ3SYZoirq", //Polygon communes
-        fusionTableId: "1pigpdu2e4L1WADaoSblfMbKVH-UMLY7Ej9MtvIG9", //Lines axes de circulation
+        fusionTableId: "12NKH0-cu-AwfpfEiD83u9aGJOXzYKveqkMF0HHwq", //Markers layer
+        fusion2TableId: "1BZkfBKRXVqoJi9SxYFWrHCyhzlMC_8dQ3SYZoirq", //Polygon communes
+        fusion3TableId: "1pigpdu2e4L1WADaoSblfMbKVH-UMLY7Ej9MtvIG9", //Lines axes de circulation
 
         // Found at https://console.developers.google.com/
         // Important! this key is for demonstration purposes. please register your own.
-        this.googleApiKey = options.googleApiKey || "AIzaSyAujS5cr5sJzC4IJdGk4tO5YYqINOgX0eg",
+        googleApiKey: "AIzaSyAujS5cr5sJzC4IJdGk4tO5YYqINOgX0eg",
         
         // name of the location column in your Fusion Table.
         // NOTE: if your location column name has spaces in it, surround it with single quotes
         // example: locationColumn:     "'my location'",
-        this.locationColumn = options.locationColumn || "Geo";
+        locationColumn: "Geo",
         
+                // center that your map defaults to
+        map_centroid : new google.maps.LatLng(46.701211,1.2147244),
         // appends to all address searches if not present
-        this.locationScope = options.locationScope || "Indre, France";
-
-        // zoom level when map is loaded (bigger is more zoomed in)
-        this.defaultZoom = options.defaultZoom || 11; 
-
-        // center that your map defaults to
-        this.map_centroid = new google.maps.LatLng(options.map_center[0], options.map_center[1]);
+        locationScope: "Indre, France",
+        recordName: "result", //for showing a count of results
+        recordNamePlural: "results",
         
-        // marker image for your searched address
-        if (typeof options.addrMarkerImage !== 'undefined') {
-            if (options.addrMarkerImage != "")
-                this.addrMarkerImage = options.addrMarkerImage;
-            else
-                this.addrMarkerImage = ""
+        searchRadius = options.searchRadius || 60000; //in meters ~ 1/2 mile
+        defaultZoom:        12,             //zoom level when map is loaded (bigger is more zoomed in)
+        addrMarkerImage:    'images/blue-pushpin.png', // set to empty '' to hide searched address marker
+        currentPinpoint:    null,
+        
+initialize: function() {
+    $( "#result_count" ).html("");
+
+    geocoder = new google.maps.Geocoder();
+    var myOptions = {
+      zoom: MapsLib.defaultZoom,
+      center: MapsLib.map_centroid,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      styles: [
+        {
+          stylers: [
+            { saturation: -100 }, // MODIFY Saturation and Lightness if needed
+            { lightness: 40 }     // Current values make thematic polygon shading stand out over base map
+          ]
         }
-        else
-            this.addrMarkerImage = "images/blue-pushpin.png"
+      ]
+    };
+    map = new google.maps.Map($("#map_canvas")[0],myOptions);
 
-    	this.currentPinpoint = null;
-    	$("#result_count").html("");
-        
-        this.myOptions = {
-            zoom: this.defaultZoom,
-            center: this.map_centroid,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        this.geocoder = new google.maps.Geocoder();
-        this.map = new google.maps.Map($("#map_canvas")[0], this.myOptions);
-        
-        // maintains map centerpoint for responsive design
-        google.maps.event.addDomListener(self.map, 'idle', function () {
-            self.calculateCenter();
-        });
-        google.maps.event.addDomListener(window, 'resize', function () {
-            self.map.setCenter(self.map_centroid);
-        });
-        self.searchrecords = null;
+    // maintains map centerpoint for responsive design
+    google.maps.event.addDomListener(map, 'idle', function() {
+        MapsLib.calculateCenter();
+    });
+
+    google.maps.event.addDomListener(window, 'resize', function() {
+        map.setCenter(MapsLib.map_centroid);
+    });
+
+    MapsLib.searchrecords = null;
+
+    
+    // MODIFY if needed: defines background polygon1 and polygon2 layers
+    MapsLib.fusion2 = new google.maps.FusionTablesLayer({
+      query: {
+        from:   MapsLib.fusion2TableId,
+        select: "Geo"
+      },
+      styleId: 2,
+      templateId: 2
+    });
+
+    MapsLib.fusion3 = new google.maps.FusionTablesLayer({
+      query: {
+        from:   MapsLib.fusion3TableId,
+        select: "Geo"
+      },
+      styleId: 2,
+      templateId: 2
+    });
+
 
         //reset filters
         $("#search_address").val(self.convertToPlainString($.address.parameter('address')));
