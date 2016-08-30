@@ -25,6 +25,20 @@ a:hover { color: #4B58A6; }
 .filter-purple { background-color: #7C54FB; }
 .filter-red { background-color: #FB6353; }
 
+/* custom markers*/
+styles: [{
+  where: 'Style',
+  
+.icon {
+  height: 20px; 
+  width: 20px;  
+  display: inline-block;
+}
+
+.campground {color: #00E13C; }
+
+}]
+
 canvas {-ms-touch-action: double-tap-zoom;}
 
 /* customizations for iframe template */
