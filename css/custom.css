@@ -37,6 +37,6 @@ canvas {-ms-touch-action: double-tap-zoom;}
 styles: [{
   where: 'Style',
   markerOptions: {
-    iconName: "supported_icon_name"
+    iconName: "campground"
   },
 }]
