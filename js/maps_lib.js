@@ -3,7 +3,6 @@ google.maps.visualRefresh = true;
 
 var MapsLib = MapsLib || {};
 var MapsLib = {
-var map;
     var layer_0;
     var layer_1;
     var layer_2;
