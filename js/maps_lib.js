@@ -63,6 +63,24 @@ var MapsLib = {
     });
 
     MapsLib.searchrecords = null;
+    
+    MapsLib.polygon1 = new google.maps.FusionTablesLayer({
+      query: {
+        from:   MapsLib.polygon1TableID,
+        select: "Geo"
+      },
+      styleId: 2,
+      templateId: 2
+    });
+
+    MapsLib.polygon2 = new google.maps.FusionTablesLayer({
+      query: {
+        from:   MapsLib.polygon2TableID,
+        select: "Geo"
+      },
+      styleId: 2,
+      templateId: 2
+    });
 
         //reset filters
         $("#search_address").val(self.convertToPlainString($.address.parameter('address')));
