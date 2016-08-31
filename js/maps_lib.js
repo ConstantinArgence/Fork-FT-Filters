@@ -6,11 +6,10 @@ var MapsLib = {
     var layer_0;
     var layer_1;
     var layer_2;
-    function initialize() {
-      map = new google.maps.Map(document.getElementById('map-canvas'), {
+    
         center: new google.maps.LatLng(46.74169386912707, 1.6465245019530617),
         zoom: 10
-      });
+      };
       var style = [
         {
           featureType: 'all',
