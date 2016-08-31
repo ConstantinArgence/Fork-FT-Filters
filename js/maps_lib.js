@@ -1,4 +1,18 @@
+/*!
+ * Searchable Map Template with Google Fusion Tables
+ * http://derekeder.com/searchable_map_template/
+ *
+ * Copyright 2012, Derek Eder
+ * Licensed under the MIT license.
+ * https://github.com/derekeder/FusionTable-Map-Template/wiki/License
+ *
+ * Date: 12/10/2012
+ *
+ */
+
+// Enable the visual refresh
 google.maps.visualRefresh = true;
+
 
 var MapsLib = MapsLib || {};
 var MapsLib = {
@@ -11,7 +25,7 @@ var MapsLib = {
   fusionTableId:      "1BZkfBKRXVqoJi9SxYFWrHCyhzlMC_8dQ3SYZoirq", // Database
 
   polygon1TableID:    "12NKH0-cu-AwfpfEiD83u9aGJOXzYKveqkMF0HHwq", //communes
-  polygon2TableID:    "1pigpdu2e4L1WADaoSblfMbKVH-UMLY7Ej9MtvIG9", //lines
+ 
 
   //*New Fusion Tables Requirement* API key. found at https://code.google.com/apis/console/
   //*Important* this key is for demonstration purposes. please register your own.
@@ -76,14 +90,7 @@ var MapsLib = {
       templateId: 2
     });
 
-    MapsLib.polygon2 = new google.maps.FusionTablesLayer({
-      query: {
-        from:   MapsLib.polygon2TableID,
-        select: "col4"
-      },
-      styleId: 2,
-      templateId: 2
-    });
+  
     
         //reset filters
         $("#search_address").val(self.convertToPlainString($.address.parameter('address')));
