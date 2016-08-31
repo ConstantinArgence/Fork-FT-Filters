@@ -1,4 +1,4 @@
-/google.maps.visualRefresh = true;
+google.maps.visualRefresh = true;
 
 var MapsLib = MapsLib || {};
 var MapsLib = {
