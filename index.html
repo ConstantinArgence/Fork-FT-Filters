@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang='en'>
   <head>
-    <title>Indices geographiques autour de Rosnay</title>
-    <meta charset='utf-8' />
+    <title>Indices geographiques autour de Rosnay</title> <!--titre -->
+    <meta charset='utf-8' /> <!--character set -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <meta content='' name='description' />
+    <meta content='' name='description' /> 
     <meta content='' name='author' />
     <!-- Styles -->
-    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/> <!--compiler les documents -->
     <link rel="stylesheet" href="css/custom.css"/>
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -15,7 +15,8 @@
     <![endif]-->
   </head>
   <body>
-    <div class='navbar navbar-default navbar-static-top'>
+    <!--Bandeau du haut -->
+    <div class='navbar navbar-default navbar-static-top'> 
       <div class='container-fluid'>
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -31,7 +32,7 @@
             <li class='active'><a href="index.html">Map</a></li>
             <li><a href="about.html">About</a></li>
           </ul>
-        </div><!--/.nav-collapse -->
+        </div><!--texte descriptif a droit -->
       </div>
     </div>
     <div class='container-fluid'>
@@ -43,13 +44,15 @@
           <p>-des elements demographiques
           <p>-les axes de circulation</p>
           <div class='well'>
-            <h4>
+    <!--Container droit -->
+            <h4> <!--barre d'adresse -->
               Adresse <small>(<a id='find_me' href='#'>trouvez moi</a>)</small>
             </h4>
             <p>
               <input class='form-control' id='search_address' placeholder='tapez une adresse' type='text' />
             </p>
             <p>
+              <!--radius -->
               <label>
                 sur
                 <select id='search_radius'>
@@ -62,20 +65,20 @@
             </p>
             </br>
 </br>
-
-            
+       <!--slidebar perimetre -->
              <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.min.css"/>
              <h4>
               Perimetre <small>
-                  <span id='Km-selected-start'>0</span>
-    -             <span id='Km-selected-end'>200</span>
+                  <span id='Km-selected-start'>0 km</span>
+    -             <span id='Km-selected-end'>60 km</span>
                  </small>
               </h4>
               <div id='Km-slider'></div>
-              <span class='pull-left'>0</span>
-              <span class='pull-right'>200</span>
+              <span class='pull-left'>0 km</span>
+              <span class='pull-right'>60 km</span>
 </br>
 </br>
+    <!--Filtre checkbox -->
           <h4>
   Etablissement
 </h4>
@@ -132,6 +135,7 @@
 </ul>
 
             <br />
+            <!--bouton recherche et reset -->
             <a class='btn btn-primary' id='search' href='#'>
               <i class='glyphicon glyphicon-search'></i>
               Search
@@ -151,24 +155,26 @@
             </div>
           </noscript>
           <div id='map_canvas'></div>
+          <!--Sources -->
           <p class='pull-right'>
             <a href='http://derekeder.com/searchable_map_template/'>Searchable Map Template</a> by <a href='http://derekeder.com'>Derek Eder</a>.
         </p>
         </div>
       </div>
     </div>
-
-    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
-    <script type="text/javascript" src="js/jquery.address.js"></script>
+    
+<!--Scripts -->
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script> <!--load jquery -->
+    <script type="text/javascript" src="js/jquery.address.js"></script>  <!-- jquery API address -->
     ...
-    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script> <!--script perimetre -->
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
     ...
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false&libraries=places,geometry&key=<"AIzaSyAujS5cr5sJzC4IJdGk4tO5YYqINOgX0eg"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAujS5cr5sJzC4IJdGk4tO5YYqINOgX0eg&libraries=geometry,places"></script> <!-- request Maps API + API key-->
     <script type="text/javascript" src="js/maps_lib.js"></script>
     <script type='text/javascript'>
-      //<![CDATA[
+      //<![CDATA[ <!-- textual data-->
         $(window).resize(function () {
           var h = $(window).height(),
             offsetTop = 105; // Calculate the top offset
