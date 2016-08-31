@@ -3,29 +3,11 @@ google.maps.visualRefresh = true;
 
 var MapsLib = MapsLib || {};
 var MapsLib = {
-    var layer_0;
-    var layer_1;
-    var layer_2;
     
         center: new google.maps.LatLng(46.74169386912707, 1.6465245019530617),
         zoom: 10
-      };
-      var style = [
-        {
-          featureType: 'all',
-          elementType: 'all',
-          stylers: [
-            { saturation: 75 }
-          ]
-        }
-      ];
-      var styledMapType = new google.maps.StyledMapType(style, {
-        map: map,
-        name: 'Styled Map'
-      });
-      map.mapTypes.set('map-style', styledMapType);
-      map.setMapTypeId('map-style');
-      layer_0 = new google.maps.FusionTablesLayer({
+      
+     layer_0 = new google.maps.FusionTablesLayer({
         query: {
           select: "col2",
           from: "1BZkfBKRXVqoJi9SxYFWrHCyhzlMC_8dQ3SYZoirq"
@@ -52,6 +34,7 @@ var MapsLib = {
         styleId: 2,
         templateId: 2
       });
+};
   
 
   searchRadius:       805,            //in meters ~ 1/2 mile
