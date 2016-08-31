@@ -178,25 +178,16 @@
     <script type="text/javascript" src="js/maps_lib.js"></script>
     <script type='text/javascript'>
       //<![CDATA[ <!-- textual data-->
-        $(window).resize(function () {
-          var h = $(window).height(),
-            offsetTop = 105; // Calculate the top offset
-        
-          $('#map_canvas').css('height', (h - offsetTop));
-        }).resize();
-        
-       $(function() {
-          var myMap = new MapsLib({
-             
-            fusionTableId:      "12NKH0-cu-AwfpfEiD83u9aGJOXzYKveqkMF0HHwq",
-           
-            googleApiKey:       "AIzaSyAujS5cr5sJzC4IJdGk4tO5YYqINOgX0eg",
-            locationColumn:     "Latitude",
-            map_center:         [46.71062860299483, 1.1878453027343117],
-            locationScope:      "Indre"
-          });
-      
-          var autocomplete = new google.maps.places.Autocomplete(document.getElementById('search_address'));
+         $(window).resize(function () {
+      var h = $(window).height(),
+      offsetTop = 105; // Calculate the top offset
+      $('#map_canvas').css('height', (h - offsetTop));
+    }).resize();
+    $(function() {
+      MapsLib.initialize();
+      var autocomplete = new google.maps.places.Autocomplete(document.getElementById('search_address'));
+
+          
       
           $(':checkbox').click(function(){
             myMap.doSearch();
