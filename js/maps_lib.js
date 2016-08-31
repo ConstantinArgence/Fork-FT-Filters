@@ -3,31 +3,58 @@ google.maps.visualRefresh = true;
 
 var MapsLib = MapsLib || {};
 var MapsLib = {
-
-  //Setup section - put your Fusion Table details here
-  //Using the v1 Fusion Tables API. See https://developers.google.com/fusiontables/docs/v1/migration_guide for more info
-
-  //the encrypted Table ID of your Fusion Table (found under File => About)
-  //NOTE: numeric IDs will be deprecated soon
-   fusionTableId:    "12NKH0-cu-AwfpfEiD83u9aGJOXzYKveqkMF0HHwq", //Data base
-   
-   polygon1TableID:      "1BZkfBKRXVqoJi9SxYFWrHCyhzlMC_8dQ3SYZoirq", // Base map
-   polygon2TableID:    "1pigpdu2e4L1WADaoSblfMbKVH-UMLY7Ej9MtvIG9", //Lines map
-
-  //*New Fusion Tables Requirement* API key. found at https://code.google.com/apis/console/
-  //*Important* this key is for demonstration purposes. please register your own.
-  googleApiKey:       "AIzaSyAujS5cr5sJzC4IJdGk4tO5YYqINOgX0eg",
-
-  //name of the location column in your Fusion Table.
-  //NOTE: if your location column name has spaces in it, surround it with single quotes
-  //example: locationColumn:     "'my location'",
-  locationColumn:     "Geo",
-
-  map_centroid:       new google.maps.LatLng(46.74169386912707, 1.6465245019530617), //center that your map defaults to
-  locationScope:      "Indre, France",      //geographical area appended to all address searches
-  recordName:         "result",       //for showing number of results
-  recordNamePlural:   "results",
-
+var map;
+    var layer_0;
+    var layer_1;
+    var layer_2;
+    function initialize() {
+      map = new google.maps.Map(document.getElementById('map-canvas'), {
+        center: new google.maps.LatLng(46.74169386912707, 1.6465245019530617),
+        zoom: 10
+      });
+      var style = [
+        {
+          featureType: 'all',
+          elementType: 'all',
+          stylers: [
+            { saturation: 75 }
+          ]
+        }
+      ];
+      var styledMapType = new google.maps.StyledMapType(style, {
+        map: map,
+        name: 'Styled Map'
+      });
+      map.mapTypes.set('map-style', styledMapType);
+      map.setMapTypeId('map-style');
+      layer_0 = new google.maps.FusionTablesLayer({
+        query: {
+          select: "col2",
+          from: "1BZkfBKRXVqoJi9SxYFWrHCyhzlMC_8dQ3SYZoirq"
+        },
+        map: map,
+        styleId: 2,
+        templateId: 2
+      });
+      layer_1 = new google.maps.FusionTablesLayer({
+        query: {
+          select: "col8",
+          from: "12NKH0-cu-AwfpfEiD83u9aGJOXzYKveqkMF0HHwq"
+        },
+        map: map,
+        styleId: 2,
+        templateId: 2
+      });
+      layer_2 = new google.maps.FusionTablesLayer({
+        query: {
+          select: "col4",
+          from: "1pigpdu2e4L1WADaoSblfMbKVH-UMLY7Ej9MtvIG9"
+        },
+        map: map,
+        styleId: 2,
+        templateId: 2
+      });
+  
 
   searchRadius:       805,            //in meters ~ 1/2 mile
   defaultZoom:        12,             //zoom level when map is loaded (bigger is more zoomed in)
@@ -64,24 +91,7 @@ var MapsLib = {
 
     MapsLib.searchrecords = null;
     
-    MapsLib.polygon1 = new google.maps.FusionTablesLayer({
-      query: {
-        from:   MapsLib.polygon1TableID,
-        select: "Geo"
-      },
-      styleId: 2,
-      templateId: 2
-    });
-
-    MapsLib.polygon2 = new google.maps.FusionTablesLayer({
-      query: {
-        from:   MapsLib.polygon2TableID,
-        select: "Geo"
-      },
-      styleId: 2,
-      templateId: 2
-    });
-
+    
         //reset filters
         $("#search_address").val(self.convertToPlainString($.address.parameter('address')));
         var loadRadius = self.convertToPlainString($.address.parameter('radius'));
