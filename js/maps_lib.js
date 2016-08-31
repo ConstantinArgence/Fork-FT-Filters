@@ -7,7 +7,7 @@ var MapsLib = {
         center: new google.maps.LatLng(46.74169386912707, 1.6465245019530617),
         zoom: 10
       
-     layer_0 = new google.maps.FusionTablesLayer({
+     MapsLib.layer_0 = new google.maps.FusionTablesLayer({
         query: {
           select: "col2",
           from: "1BZkfBKRXVqoJi9SxYFWrHCyhzlMC_8dQ3SYZoirq"
@@ -16,7 +16,7 @@ var MapsLib = {
         styleId: 2,
         templateId: 2
       });
-      layer_1 = new google.maps.FusionTablesLayer({
+       MapsLib.layer_1 = new google.maps.FusionTablesLayer({
         query: {
           select: "col8",
           from: "12NKH0-cu-AwfpfEiD83u9aGJOXzYKveqkMF0HHwq"
@@ -25,7 +25,7 @@ var MapsLib = {
         styleId: 2,
         templateId: 2
       });
-      layer_2 = new google.maps.FusionTablesLayer({
+       MapsLib.layer_2 = new google.maps.FusionTablesLayer({
         query: {
           select: "col4",
           from: "1pigpdu2e4L1WADaoSblfMbKVH-UMLY7Ej9MtvIG9"
