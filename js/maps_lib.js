@@ -52,12 +52,9 @@
       });
     }
     google.maps.event.addDomListener(window, 'load', initialize);
-  </script>
-  </head>
-  <body>
+  
     <div id="map-canvas"></div>
-  </body>
-</html>
+ 
     var MapsLib = function (options) {
         var self = this;
 
