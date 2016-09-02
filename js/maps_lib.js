@@ -1,4 +1,60 @@
 (function (window, undefined) { //wrap jquery
+    var map;
+    var layer_0;
+    var layer_1;
+    var layer_2;
+    function initialize() {
+      map = new google.maps.Map(document.getElementById('map-canvas'), {
+        center: new google.maps.LatLng(46.74169386912707, 1.6465245019530617),
+        zoom: 10
+      });
+      var style = [
+        {
+          featureType: 'all',
+          elementType: 'all',
+          stylers: [
+            { saturation: 75 }
+          ]
+        }
+      ];
+      var styledMapType = new google.maps.StyledMapType(style, {
+        map: map,
+        name: 'Styled Map'
+      });
+      map.mapTypes.set('map-style', styledMapType);
+      map.setMapTypeId('map-style');
+      layer_0 = new google.maps.FusionTablesLayer({
+        query: {
+          select: "col2",
+          from: "1BZkfBKRXVqoJi9SxYFWrHCyhzlMC_8dQ3SYZoirq"
+        },
+        map: map,
+        styleId: 2,
+        templateId: 2
+      });
+      layer_1 = new google.maps.FusionTablesLayer({
+        query: {
+          select: "col8",
+          from: "12NKH0-cu-AwfpfEiD83u9aGJOXzYKveqkMF0HHwq"
+        },
+        map: map,
+        styleId: 2,
+        templateId: 2
+      });
+      layer_2 = new google.maps.FusionTablesLayer({
+        query: {
+          select: "col4",
+          from: "1pigpdu2e4L1WADaoSblfMbKVH-UMLY7Ej9MtvIG9"
+        },
+        map: map,
+        styleId: 2,
+        templateId: 2
+      });
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+  
+    <div id="map-canvas"></div>
+ 
     var MapsLib = function (options) {
         var self = this;
 
@@ -8,21 +64,9 @@
         this.recordNamePlural = options.recordNamePlural || "results";
         this.searchRadius = options.searchRadius || 805; //in meters ~ 1/2 mile
     
-//Map
-        // the encrypted Table ID of your Fusion Table (found under File => About)
-        this.fusionTableId = options.fusionTableId || "12NKH0-cu-AwfpfEiD83u9aGJOXzYKveqkMF0HHwq",
-
         // Api Key
         this.googleApiKey = options.googleApiKey || "AIzaSyAujS5cr5sJzC4IJdGk4tO5YYqINOgX0eg",
         
-        // name of the location column in your Fusion Table.
-        this.locationColumn = options.locationColumn || "latitude";
-        
-        // appends to all address searches if not present
-        this.locationScope = options.locationScope || "";
-
-        // zoom level when map is loaded (bigger is more zoomed in)
-        this.defaultZoom = options.defaultZoom || 11; 
 
         // center that your map defaults to
         this.map_centroid = new google.maps.LatLng(options.map_center[0], options.map_center[1]);
@@ -96,21 +140,7 @@
     MapsLib.prototype.submitSearch = function (whereClause, map) {
         
         var self = this;
-        
-//style ID
-        self.searchrecords = new google.maps.FusionTablesLayer({
-            query: {
-                from: self.fusionTableId,
-                select: self.locationColumn,
-                where: whereClause
-            },
-            styleId: 2,
-            templateId: 2
-        });
-        self.fusionTable = self.searchrecords;
-        self.searchrecords.setMap(map);
-        self.getCount(whereClause);
-    };
+
 
 //address
     MapsLib.prototype.getgeoCondition = function (address, callback) {
